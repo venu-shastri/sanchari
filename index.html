@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bike Route Distance Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+    }
+    input, button {
+      margin: 5px;
+      padding: 10px;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bike Route Distance Calculator</h1>
+  <form id="distanceForm">
+    <label for="start">Starting Point:</label>
+    <input type="text" id="start" placeholder="e.g., Bangalore" required>
+    <br>
+    <label for="destination">Destination:</label>
+    <input type="text" id="destination" placeholder="e.g., Varkala" required>
+    <br>
+    <button type="button" onclick="calculateDistance()">Calculate Distance</button>
+  </form>
+  <div class="result" id="result"></div>
+
+  <script>
+    function calculateDistance() {
+      const start = document.getElementById("start").value;
+      const destination = document.getElementById("destination").value;
+
+      // Simulating calculation (replace with actual API logic)
+      const distances = {
+        "Bangalore-Varkala": 690,
+        "Bangalore-Ooty": 280,
+        "Ooty-Valparai": 180,
+        "Valparai-Varkala": 330,
+      };
+
+      const route = `${start}-${destination}`;
+      const distance = distances[route] || "Route not available.";
+
+      document.getElementById("result").textContent = 
+        typeof distance === "number" 
+          ? `The distance between ${start} and ${destination} is ${distance} km.` 
+          : distance;
+    }
+  </script>
+</body>
+</html>
